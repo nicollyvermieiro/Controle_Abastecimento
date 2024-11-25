@@ -1,4 +1,4 @@
-import 'package:controlegasolina/controller/auth_controller.dart';
+import 'package:flutter_controle_abastecimento/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {

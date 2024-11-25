@@ -1,4 +1,4 @@
-import 'package:controlegasolina/controller/veiculo_controller.dart';
+import 'package:flutter_controle_abastecimento/controller/veiculo_controller.dart';
 import 'package:flutter/material.dart';
 
 class AdicionarVeiculoScreen extends StatefulWidget {

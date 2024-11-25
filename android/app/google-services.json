@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "807751903956",
+    "project_id": "flutter-controle-abastecimento",
+    "storage_bucket": "flutter-controle-abastecimento.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807751903956:android:dbf710b26e595f692d6941",
+        "android_client_info": {
+          "package_name": "com.example.flu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkFHi4GmHWxS7Q9bkMke7BxT4NSPo0XUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
