@@ -1,31 +1,26 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rxdart/rxdart.dart';
 
-class HomeController {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class PerfilController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Stream<QuerySnapshot> getVeiculos() {
-    return _firestore.collection('veiculos')
-      .where('userId', isEqualTo: _auth.currentUser!.uid)
-      .snapshots();
-  }
-
-  Stream<List<QuerySnapshot>> getAbastecimentos(List<DocumentSnapshot> veiculos) {
-    List<Stream<QuerySnapshot>> streams = veiculos.map((veiculo) {
-      return _firestore.collection('abastecimentos')
-        .where('veiculoId', isEqualTo: veiculo.id)
-        .snapshots();
-    }).toList();
-    return CombineLatestStream.list(streams);
-  }
-
-  Future<void> logout() async {
-    await _auth.signOut();
-  }
-
-  User? getCurrentUser() {
+  Future<User?> getCurrentUser() async {
     return _auth.currentUser;
+  }
+
+  Future<void> updateEmail(String email) async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      await user.updateEmail(email);
+    }
+  }
+
+  Future<void> updatePassword(String password) async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      await user.updatePassword(password);
+    }
+  }
+
+  Future<void> updateNickname(String nickname) async {
   }
 }
