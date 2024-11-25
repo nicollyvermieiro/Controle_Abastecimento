@@ -2,6 +2,8 @@ import 'package:flutter_controle_abastecimento/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -30,12 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
-        backgroundColor: Color(0xFF36CAC3),
+        title: const Text('Login'),
+        backgroundColor: const Color(0xFF36CAC3),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -48,18 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: const Color(0xFF2C90EE)),
+                    style: const TextStyle(color: Color(0xFF2C90EE)),
                   ),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _login,
-                style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF36CAC3)),
-                child: Text('Login', style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF36CAC3)),
+                child: const Text('Login', style: TextStyle(color: Colors.white)),
               ),
               TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/register'),
-                child: Text('Não tem uma conta? Registre-se aqui!', style: TextStyle(color: Colors.white)),
+                child: const Text('Não tem uma conta? Registre-se aqui!', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -75,18 +77,18 @@ class _LoginScreenState extends State<LoginScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF36CAC3).withOpacity(0.2),
-          border: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
+          fillColor: const Color(0xFF36CAC3).withOpacity(0.2),
+          border: const OutlineInputBorder(),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF36CAC3)),
           ),
         ),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         obscureText: obscureText,
       ),
     );

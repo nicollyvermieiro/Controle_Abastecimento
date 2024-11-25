@@ -5,7 +5,7 @@ class EditarVeiculoScreen extends StatefulWidget {
   final String veiculoId;
   final Map<String, dynamic> existingData;
 
-  EditarVeiculoScreen({required this.veiculoId, required this.existingData});
+  const EditarVeiculoScreen({super.key, required this.veiculoId, required this.existingData});
 
   @override
   _EditarVeiculoScreenState createState() => _EditarVeiculoScreenState();
@@ -56,12 +56,12 @@ class _EditarVeiculoScreenState extends State<EditarVeiculoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Veículo'),
-        backgroundColor: Color(0xFF4A148C),
+        title: const Text('Editar Veículo'),
+        backgroundColor: const Color(0xFF4A148C),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -75,16 +75,16 @@ class _EditarVeiculoScreenState extends State<EditarVeiculoScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: const Color(0xFF5F36F4)),
+                    style: const TextStyle(color: Color(0xFF5F36F4)),
                   ),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _editarVeiculo,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF36CAC3),
+                  backgroundColor: const Color(0xFF36CAC3),
                 ),
-                child: Text('Salvar', style: TextStyle(color: Colors.white)),
+                child: const Text('Salvar', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -100,18 +100,18 @@ class _EditarVeiculoScreenState extends State<EditarVeiculoScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF36CAC3).withOpacity(0.2),
-          border: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
+          fillColor: const Color(0xFF36CAC3).withOpacity(0.2),
+          border: const OutlineInputBorder(),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF36CAC3)),
           ),
         ),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         keyboardType: keyboardType,
       ),
     );

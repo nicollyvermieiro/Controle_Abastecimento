@@ -5,11 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 class MyDrawer extends StatelessWidget {
   final AuthController _authController = AuthController();
 
+  MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     User? user = _authController.getCurrentUser();
 
     return Drawer(
+      backgroundColor: const Color(0xFF2E2E2E),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -67,7 +70,6 @@ class MyDrawer extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Color(0xFF2E2E2E),
     );
   }
 }

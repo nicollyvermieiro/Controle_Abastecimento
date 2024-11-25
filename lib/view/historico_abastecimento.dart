@@ -9,31 +9,33 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
   final AbastecimentoController _abastecimentoController =
       AbastecimentoController();
 
+  HistoricoAbastecimentosScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Histórico de abastecimentos'),
-        backgroundColor: Color(0xFF36CAC3),
+        title: const Text('Histórico de abastecimentos'),
+        backgroundColor: const Color(0xFF36CAC3),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: StreamBuilder<QuerySnapshot>(
           stream: _abastecimentoController.getAbastecimentos(user!.uid),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
               return Center(
                   child: Text('Erro: ${snapshot.error}',
-                      style: TextStyle(color: Colors.white)));
+                      style: const TextStyle(color: Colors.white)));
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Center(
+              return const Center(
                   child: Text('Nenhum abastecimento encontrado',
                       style: TextStyle(color: Colors.white)));
             }
@@ -86,29 +88,29 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                     return Column(
                       children: [
                         Container(
-                          color: Color(0xFF36CAC3).withOpacity(0.5),
+                          color: const Color(0xFF36CAC3).withOpacity(0.5),
                           child: ExpansionTile(
                             title: Text(veiculoNome,
-                                style: TextStyle(color: Colors.white)),
+                                style: const TextStyle(color: Colors.white)),
                             children: abastecimentos.map((abastecimentoDoc) {
                               var abastecimentoData = abastecimentoDoc.data()
                                   as Map<String, dynamic>;
                               return Card(
-                                color: Color(0xFF4A148C).withOpacity(0.2),
+                                color: const Color(0xFF4A148C).withOpacity(0.2),
                                 child: ListTile(
                                   title: Text(
                                     'Data: ${abastecimentoData['data'].toDate()}',
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                   subtitle: Text(
                                     'Litros: ${abastecimentoData['litros']} - Quilometragem: ${abastecimentoData['quilometragem']}',
-                                    style: TextStyle(color: Colors.white70),
+                                    style: const TextStyle(color: Colors.white70),
                                   ),
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       IconButton(
-                                        icon: Icon(Icons.edit,
+                                        icon: const Icon(Icons.edit,
                                             color: Colors.white),
                                         onPressed: () {
                                           Navigator.push(
@@ -126,7 +128,7 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                                         },
                                       ),
                                       IconButton(
-                                        icon: Icon(Icons.delete,
+                                        icon: const Icon(Icons.delete,
                                             color: Colors.white),
                                         onPressed: () async {
                                           await _abastecimentoController
@@ -142,12 +144,12 @@ class HistoricoAbastecimentosScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.symmetric(vertical: 2.0),
-                          color: Color(0xFF4A148C).withOpacity(0.4),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.symmetric(vertical: 2.0),
+                          color: const Color(0xFF4A148C).withOpacity(0.4),
                           child: Text(
                             'Média de km/l: ${mediaKmPorLitro.toStringAsFixed(2)}',
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ],

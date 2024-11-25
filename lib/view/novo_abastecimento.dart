@@ -6,8 +6,8 @@ class NovoAbastecimentoScreen extends StatefulWidget {
   final String? abastecimentoId;
   final Map<String, dynamic>? existingData;
 
-  NovoAbastecimentoScreen(
-      {required this.veiculoId, this.abastecimentoId, this.existingData});
+  const NovoAbastecimentoScreen(
+      {super.key, required this.veiculoId, this.abastecimentoId, this.existingData});
 
   @override
   _NovoAbastecimentoScreenState createState() =>
@@ -78,11 +78,11 @@ class _NovoAbastecimentoScreenState extends State<NovoAbastecimentoScreen> {
         title: Text(widget.abastecimentoId == null
             ? 'Novo Abastecimento'
             : 'Editar Abastecimento'),
-        backgroundColor: Color(0xFF36CAC3),
+        backgroundColor: const Color(0xFF36CAC3),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -96,18 +96,18 @@ class _NovoAbastecimentoScreenState extends State<NovoAbastecimentoScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: const Color(0xFF3643F4)),
+                    style: const TextStyle(color: Color(0xFF3643F4)),
                   ),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _registrarAbastecimento,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4A148C),
+                  backgroundColor: const Color(0xFF4A148C),
                 ),
                 child: Text(
                     widget.abastecimentoId == null ? 'Registrar' : 'Salvar',
-                    style: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -124,18 +124,18 @@ class _NovoAbastecimentoScreenState extends State<NovoAbastecimentoScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF36CAC3).withOpacity(0.2),
-          border: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
+          fillColor: const Color(0xFF36CAC3).withOpacity(0.2),
+          border: const OutlineInputBorder(),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF36CAC3)),
           ),
         ),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         keyboardType: keyboardType,
       ),
     );

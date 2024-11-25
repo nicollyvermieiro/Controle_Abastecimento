@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -18,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Início'),
+        title: const Text('Início'),
         backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () async {
               await _homeController.logout();
               Navigator.pushReplacementNamed(context, '/');
@@ -33,18 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: MyDrawer(),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: StreamBuilder<QuerySnapshot>(
           stream: _homeController.getVeiculos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator(color: Colors.redAccent));
+              return const Center(child: CircularProgressIndicator(color: Colors.redAccent));
             }
             if (snapshot.hasError) {
-              return Center(child: Text('Erro: ${snapshot.error}', style: TextStyle(color: Colors.redAccent)));
+              return Center(child: Text('Erro: ${snapshot.error}', style: const TextStyle(color: Colors.redAccent)));
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Center(child: Text('Nenhum veículo encontrado', style: TextStyle(color: Colors.white)));
+              return const Center(child: Text('Nenhum veículo encontrado', style: TextStyle(color: Colors.white)));
             }
 
             List<DocumentSnapshot> veiculos = snapshot.data!.docs;
@@ -52,10 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: _homeController.getAbastecimentos(veiculos),
               builder: (context, abastecimentoSnapshot) {
                 if (abastecimentoSnapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator(color: Colors.redAccent));
+                  return const Center(child: CircularProgressIndicator(color: Colors.redAccent));
                 }
                 if (abastecimentoSnapshot.hasError) {
-                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: TextStyle(color: Colors.redAccent)));
+                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: const TextStyle(color: Colors.redAccent)));
                 }
 
                 int recentRefuels = 0;
@@ -68,11 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Bem-vindo ao Controle de Abastecimento!',
                         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       if (user != null)
                         Card(
                           color: Colors.red.withOpacity(0.2),
@@ -87,30 +89,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Usuário Atual', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                                      Text(user!.email ?? '', style: TextStyle(color: Colors.white70)),
+                                      const Text('Usuário Atual', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text(user.email ?? '', style: const TextStyle(color: Colors.white70)),
                                     ],
                                   ),
                                 ),
-                                VerticalDivider(color: Colors.white70),
+                                const VerticalDivider(color: Colors.white70),
                                 Expanded(
                                   flex: 1,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Total de Veículos', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                                      Text('${veiculos.length}', style: TextStyle(color: Colors.white70)),
+                                      const Text('Total de Veículos', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text('${veiculos.length}', style: const TextStyle(color: Colors.white70)),
                                     ],
                                   ),
                                 ),
-                                VerticalDivider(color: Colors.white70),
+                                const VerticalDivider(color: Colors.white70),
                                 Expanded(
                                   flex: 1,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Abastecimentos Recentes', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                                      Text('$recentRefuels', style: TextStyle(color: Colors.white70)),
+                                      const Text('Abastecimentos Recentes', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                                      Text('$recentRefuels', style: const TextStyle(color: Colors.white70)),
                                     ],
                                   ),
                                 ),

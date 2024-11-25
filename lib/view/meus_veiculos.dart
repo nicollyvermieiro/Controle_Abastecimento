@@ -9,40 +9,42 @@ import 'package:flutter/material.dart';
 class MeusVeiculosScreen extends StatelessWidget {
   final VeiculoController _veiculoController = VeiculoController();
 
+  MeusVeiculosScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     String userId = FirebaseAuth.instance.currentUser!.uid;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meus Veículos'),
-        backgroundColor: Color(0xFF3639F4),
+        title: const Text('Meus Veículos'),
+        backgroundColor: const Color(0xFF3639F4),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('veiculos')
               .where('userId', isEqualTo: userId)
               .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+            if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var veiculo = snapshot.data!.docs[index];
                 return Card(
-                  color: Color(0xFF3639F4),
+                  color: const Color(0xFF3639F4),
                   child: ListTile(
                     title: Text(
                       veiculo['nome'],
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                     subtitle: Text(
                       '${veiculo['modelo']} - ${veiculo['ano']}',
-                      style: TextStyle(color: Colors.white70),
+                      style: const TextStyle(color: Colors.white70),
                     ),
                     trailing: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -59,11 +61,11 @@ class MeusVeiculosScreen extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white, backgroundColor: Color(0xFF3639F4),
+                              foregroundColor: Colors.white, backgroundColor: const Color(0xFF3639F4),
                             ),
-                            child: Text('Abastecer'),
+                            child: const Text('Abastecer'),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
@@ -77,19 +79,19 @@ class MeusVeiculosScreen extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white, backgroundColor: Color(0xFF3639F4),
+                              foregroundColor: Colors.white, backgroundColor: const Color(0xFF3639F4),
                             ),
-                            child: Text('Editar'),
+                            child: const Text('Editar'),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           ElevatedButton(
                             onPressed: () async {
                               await _veiculoController.deletarVeiculo(veiculo.id);
                             },
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white, backgroundColor: Color(0xFF3639F4),
+                              foregroundColor: Colors.white, backgroundColor: const Color(0xFF3639F4),
                             ),
-                            child: Text('Excluir'),
+                            child: const Text('Excluir'),
                           ),
                         ],
                       ),

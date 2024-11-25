@@ -2,6 +2,8 @@ import 'package:flutter_controle_abastecimento/controller/veiculo_controller.dar
 import 'package:flutter/material.dart';
 
 class AdicionarVeiculoScreen extends StatefulWidget {
+  const AdicionarVeiculoScreen({super.key});
+
   @override
   _AdicionarVeiculoScreenState createState() => _AdicionarVeiculoScreenState();
 }
@@ -41,12 +43,12 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adicionar Veículo'),
-        backgroundColor: Color(0xFF4A148C),
+        title: const Text('Adicionar Veículo'),
+        backgroundColor: const Color(0xFF4A148C),
         foregroundColor: Colors.white,
       ),
       body: Container(
-        color: Color(0xFF2E2E2E),
+        color: const Color(0xFF2E2E2E),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -60,16 +62,16 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     _errorMessage,
-                    style: TextStyle(color: Colors.red),
+                    style: const TextStyle(color: Colors.red),
                   ),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _adicionarVeiculo,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFDD29B0),
+                  backgroundColor: const Color(0xFFDD29B0),
                 ),
-                child: Text('Adicionar', style: TextStyle(color: Colors.white)),
+                child: const Text('Adicionar', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -85,18 +87,18 @@ class _AdicionarVeiculoScreenState extends State<AdicionarVeiculoScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF36CAC3).withOpacity(0.2),
-          border: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
+          fillColor: const Color(0xFF36CAC3).withOpacity(0.2),
+          border: const OutlineInputBorder(),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF36CAC3)),
           ),
         ),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         keyboardType: keyboardType,
       ),
     );

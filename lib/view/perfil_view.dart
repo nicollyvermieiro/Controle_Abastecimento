@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PerfilScreen extends StatefulWidget {
+  const PerfilScreen({super.key});
+
   @override
   _PerfilScreenState createState() => _PerfilScreenState();
 }
@@ -36,16 +38,16 @@ class _PerfilScreenState extends State<PerfilScreen> {
     if (_senhaController.text.isNotEmpty) {
       await _perfilController.updatePassword(_senhaController.text);
     }
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Perfil atualizado com sucesso')));
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Perfil atualizado com sucesso')));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil'),
+        title: const Text('Perfil'),
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF36CAC3),
+        backgroundColor: const Color(0xFF36CAC3),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -54,18 +56,18 @@ class _PerfilScreenState extends State<PerfilScreen> {
             _buildTextField(_nicknameController, 'Nickname'),
             _buildTextField(_emailController, 'Email'),
             _buildTextField(_senhaController, 'Senha', obscureText: true),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _updateUserProfile,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF36CAC3),
+                backgroundColor: const Color(0xFF36CAC3),
               ),
-              child: Text('Atualizar Perfil'),
+              child: const Text('Atualizar Perfil'),
             ),
           ],
         ),
       ),
-      backgroundColor: Color(0xFF2E2E2E),
+      backgroundColor: const Color(0xFF2E2E2E),
     );
   }
 
@@ -76,18 +78,18 @@ class _PerfilScreenState extends State<PerfilScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Color(0xFF36CAC3).withOpacity(0.2),
-          border: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
+          fillColor: const Color(0xFF36CAC3).withOpacity(0.2),
+          border: const OutlineInputBorder(),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF36CAC3)),
           ),
         ),
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         obscureText: obscureText,
       ),
     );
