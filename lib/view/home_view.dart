@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Início'),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Color(0xFF36CAC3),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
@@ -40,10 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
           stream: _homeController.getVeiculos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator(color: Colors.redAccent));
+              return const Center(child: CircularProgressIndicator(color: Color(0xFF36CAC3)));
             }
             if (snapshot.hasError) {
-              return Center(child: Text('Erro: ${snapshot.error}', style: const TextStyle(color: Colors.redAccent)));
+              return Center(child: Text('Erro: ${snapshot.error}', style: const TextStyle(color: Color(0xFF36CAC3))));
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
               return const Center(child: Text('Nenhum veículo encontrado', style: TextStyle(color: Colors.white)));
@@ -54,10 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: _homeController.getAbastecimentos(veiculos),
               builder: (context, abastecimentoSnapshot) {
                 if (abastecimentoSnapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator(color: Colors.redAccent));
+                  return const Center(child: CircularProgressIndicator(color: Color(0xFF36CAC3)));
                 }
                 if (abastecimentoSnapshot.hasError) {
-                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: const TextStyle(color: Colors.redAccent)));
+                  return Center(child: Text('Erro: ${abastecimentoSnapshot.error}', style: const TextStyle(color: Color(0xFF36CAC3))));
                 }
 
                 int recentRefuels = 0;
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 20),
                       if (user != null)
                         Card(
-                          color: Colors.red.withOpacity(0.2),
+                          color: Color(0xFF36CAC3),
                           elevation: 4,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
